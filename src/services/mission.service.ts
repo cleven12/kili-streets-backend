@@ -57,7 +57,7 @@ export class MissionService {
       playerId,
       mission.reward_tzs,
       'mission_reward',
-      `Malipo ya Misheni: ${mission.title}`,
+      `Mission Payout: ${mission.title}`,
       mission.id
     );
 
