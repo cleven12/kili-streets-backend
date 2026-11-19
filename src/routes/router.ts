@@ -1,11 +1,15 @@
 import { Database } from 'bun:sqlite';
+import { CharacterService } from '../services/character.service';
 import { MissionService } from '../services/mission.service';
 import { PlayerService } from '../services/player.service';
 import { SyncService } from '../services/sync.service';
 import { VehicleService } from '../services/vehicle.service';
 import { WalletService } from '../services/wallet.service';
 import { WorldService } from '../services/world.service';
-import { ClientSyncBatchRequest } from '../types/api';
+import {
+  ClientSyncBatchRequest,
+  GenerateCharacterRequest,
+} from '../types/api';
 
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
@@ -24,6 +28,7 @@ function jsonResponse(data: unknown, status = 200): Response {
 export function createApiRouter(db: Database) {
   const worldService = new WorldService(db);
   const playerService = new PlayerService(db);
+  const characterService = new CharacterService(db);
   const vehicleService = new VehicleService(db);
   const missionService = new MissionService(db);
   const walletService = new WalletService(db);
@@ -57,16 +62,30 @@ export function createApiRouter(db: Database) {
         return jsonResponse(worldService.getBootstrapSnapshot());
       }
 
-      // 3. Player Auth / Profile Initialization
+      // 3. Real User Characters List & Character Generator Endpoint
+      if (req.method === 'GET' && path === '/api/v1/characters') {
+        return jsonResponse({
+          characters: characterService.listAllCharacters(),
+        });
+      }
+
+      if (req.method === 'POST' && path === '/api/v1/characters/generate') {
+        const body = (await req.json()) as GenerateCharacterRequest;
+        const created =
+          characterService.generateAndRegisterUserCharacter(body);
+        return jsonResponse(created, 201);
+      }
+
+      // 4. Player Auth / Profile Initialization
       if (req.method === 'POST' && path === '/api/v1/players/auth') {
         const body = (await req.json()) as { username?: string };
         const result = playerService.authenticateOrCreate(
-          body.username || 'MoshiDriver'
+          body.username || 'cleven12'
         );
         return jsonResponse(result, 200);
       }
 
-      // 4. Get Player Profile & Wallet
+      // 5. Get Player Profile & Wallet
       const playerMatch = path.match(/^\/api\/v1\/players\/([^/]+)$/);
       if (req.method === 'GET' && playerMatch) {
         const profile = playerService.getPlayerProfile(playerMatch[1]);
@@ -76,7 +95,7 @@ export function createApiRouter(db: Database) {
         return jsonResponse(profile);
       }
 
-      // 5. Update Player Position
+      // 6. Update Player Position
       const playerStateMatch = path.match(/^\/api\/v1\/players\/([^/]+)\/state$/);
       if (req.method === 'PATCH' && playerStateMatch) {
         const body = (await req.json()) as {
@@ -96,7 +115,7 @@ export function createApiRouter(db: Database) {
         return jsonResponse({ player: updated });
       }
 
-      // 6. Vehicles List, Enter, Exit
+      // 7. Vehicles List, Enter, Exit
       if (req.method === 'GET' && path === '/api/v1/vehicles') {
         return jsonResponse({ vehicles: vehicleService.listVehicles() });
       }
@@ -126,7 +145,7 @@ export function createApiRouter(db: Database) {
         return jsonResponse(res);
       }
 
-      // 7. Missions List, Start, Complete
+      // 8. Missions List, Start, Complete
       if (req.method === 'GET' && path === '/api/v1/missions') {
         return jsonResponse({ missions: missionService.listMissions() });
       }
@@ -153,7 +172,7 @@ export function createApiRouter(db: Database) {
         return jsonResponse(res);
       }
 
-      // 8. Wallet & Shop Purchases (Duka la Mangi / Kwa Mama Ntilie)
+      // 9. Wallet & Shop Purchases
       const walletMatch = path.match(/^\/api\/v1\/wallets\/([^/]+)$/);
       if (req.method === 'GET' && walletMatch) {
         return jsonResponse(walletService.getWalletWithHistory(walletMatch[1]));
@@ -175,7 +194,7 @@ export function createApiRouter(db: Database) {
         return jsonResponse(res, res.success ? 200 : 400);
       }
 
-      // 9. Client SQLite Delta Batch Sync Endpoint
+      // 10. Client SQLite Delta Batch Sync Endpoint
       if (req.method === 'POST' && path === '/api/v1/sync/batch') {
         const body = (await req.json()) as ClientSyncBatchRequest;
         const synced = syncService.processClientSqliteBatch(body);
