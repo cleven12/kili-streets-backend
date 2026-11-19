@@ -4,8 +4,8 @@ import { ZoneRecord } from '../../types/domain';
 export const INITIAL_ZONES: ZoneRecord[] = [
   {
     id: 'zone-kcmc-gate',
-    title: 'GETI KUU LA KCMC',
-    subtitle: 'Hospitali ya Rufaa • Kijiwe cha Bajaji & Bodaboda',
+    title: 'KCMC MAIN HOSPITAL GATE',
+    subtitle: 'Referral Hospital Junction • Bajaji & Bodaboda Terminal',
     center_x: 1200,
     center_y: 340,
     radius: 360,
@@ -14,8 +14,8 @@ export const INITIAL_ZONES: ZoneRecord[] = [
   },
   {
     id: 'zone-mangi-junction',
-    title: 'NJIA PANDA YA MANGI',
-    subtitle: 'Ushirika wa Neema • Kwa Mama Ntilie & Huduma za M-Pesa',
+    title: 'MANGI CROSSROADS',
+    subtitle: 'Ushirika wa Neema • Mama Ntilie Kitchen & M-Pesa Hub',
     center_x: 1200,
     center_y: 1160,
     radius: 380,
@@ -24,8 +24,8 @@ export const INITIAL_ZONES: ZoneRecord[] = [
   },
   {
     id: 'zone-ushirika-village',
-    title: 'KIJIJI CHA USHIRIKA WA NEEMA',
-    subtitle: 'Moshi, Kilimanjaro • Mashamba ya Migomba & Kahawa',
+    title: 'USHIRIKA WA NEEMA VILLAGE',
+    subtitle: 'Moshi, Kilimanjaro • Highland Banana & Coffee Groves',
     center_x: 1200,
     center_y: 1780,
     radius: 460,
@@ -34,8 +34,8 @@ export const INITIAL_ZONES: ZoneRecord[] = [
   },
   {
     id: 'zone-shamba-west',
-    title: 'SHAMBA LA MIGOMBA (MAGHARIBI)',
-    subtitle: 'Ushirika wa Neema • Njia ya Mkato Kijijini',
+    title: 'WEST BANANA PLANTATION',
+    subtitle: 'Ushirika wa Neema • Village Shortcut Trails',
     center_x: 420,
     center_y: 1200,
     radius: 380,
@@ -44,8 +44,8 @@ export const INITIAL_ZONES: ZoneRecord[] = [
   },
   {
     id: 'zone-hostel-east',
-    title: 'MTAA WA HOSTELI (MASHARIKI)',
-    subtitle: 'Karibu na KCMC • Makazi ya Wanafunzi & Wakazi',
+    title: 'EAST STUDENT HOSTELS',
+    subtitle: 'Near KCMC • Medical Student Residences & Apartments',
     center_x: 1950,
     center_y: 950,
     radius: 380,
