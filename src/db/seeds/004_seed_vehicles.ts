@@ -101,7 +101,7 @@ export const INITIAL_VEHICLES: VehicleRecord[] = [
   {
     id: 'daladala-kcmc-1',
     kind: 'daladala',
-    display_name: 'Daladala (KCMC - Moshi Mjini)',
+    display_name: 'Daladala (KCMC - Moshi Town Express)',
     plate_number: 'T 642 DXY',
     x: 420,
     y: 445,
@@ -125,7 +125,7 @@ export const INITIAL_VEHICLES: VehicleRecord[] = [
   {
     id: 'bajaji-patrol-2',
     kind: 'bajaji',
-    display_name: 'Bajaji (Ushirika Shuttle)',
+    display_name: 'Bajaji (Ushirika Village Shuttle)',
     plate_number: 'MC 539 KMC',
     x: 1225,
     y: 780,
