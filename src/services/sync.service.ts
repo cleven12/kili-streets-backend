@@ -1,4 +1,5 @@
 import { Database } from 'bun:sqlite';
+import { CharacterRepository } from '../repositories/character.repo';
 import { PlayerRepository } from '../repositories/player.repo';
 import { SyncRepository } from '../repositories/sync.repo';
 import { VehicleRepository } from '../repositories/vehicle.repo';
@@ -12,6 +13,7 @@ import { MissionService } from './mission.service';
 export class SyncService {
   private syncRepo: SyncRepository;
   private playerRepo: PlayerRepository;
+  private characterRepo: CharacterRepository;
   private vehicleRepo: VehicleRepository;
   private walletRepo: WalletRepository;
   private missionService: MissionService;
@@ -19,6 +21,7 @@ export class SyncService {
   constructor(db: Database) {
     this.syncRepo = new SyncRepository(db);
     this.playerRepo = new PlayerRepository(db);
+    this.characterRepo = new CharacterRepository(db);
     this.vehicleRepo = new VehicleRepository(db);
     this.walletRepo = new WalletRepository(db);
     this.missionService = new MissionService(db);
@@ -45,6 +48,13 @@ export class SyncService {
             ? ev.payload.inVehicleId
             : null;
         this.playerRepo.updatePositionAndVehicle(
+          batch.playerId,
+          x,
+          y,
+          angle,
+          inVehicleId
+        );
+        this.characterRepo.updateTransform(
           batch.playerId,
           x,
           y,
@@ -78,6 +88,7 @@ export class SyncService {
       player: updatedPlayer,
       wallet,
       vehicles: this.vehicleRepo.findAll(),
+      characters: this.characterRepo.findAll(),
       serverTime: new Date().toISOString(),
     };
   }
