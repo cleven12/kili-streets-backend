@@ -9,6 +9,7 @@ import { up007CreateMissions } from './007_create_missions';
 import { up008CreateMissionRuns } from './008_create_mission_runs';
 import { up009CreateNpcs } from './009_create_npcs';
 import { up010CreateTelemetryAndSync } from './010_create_telemetry_and_sync';
+import { up011CreateUserCharacters } from './011_create_user_characters';
 
 export function runAllMigrations(db: Database): void {
   const tx = db.transaction(() => {
@@ -22,6 +23,7 @@ export function runAllMigrations(db: Database): void {
     up008CreateMissionRuns(db);
     up009CreateNpcs(db);
     up010CreateTelemetryAndSync(db);
+    up011CreateUserCharacters(db);
   });
   tx();
 }
