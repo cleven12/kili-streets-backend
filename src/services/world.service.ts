@@ -1,5 +1,6 @@
 import { Database } from 'bun:sqlite';
 import { WORLD_BOUNDS } from '../config/constants';
+import { CharacterRepository } from '../repositories/character.repo';
 import { MissionRepository } from '../repositories/mission.repo';
 import { NpcRepository } from '../repositories/npc.repo';
 import { VehicleRepository } from '../repositories/vehicle.repo';
@@ -11,18 +12,20 @@ export class WorldService {
   private zoneRepo: ZoneRepository;
   private vehicleRepo: VehicleRepository;
   private missionRepo: MissionRepository;
+  private characterRepo: CharacterRepository;
   private npcRepo: NpcRepository;
 
   constructor(db: Database) {
     this.zoneRepo = new ZoneRepository(db);
     this.vehicleRepo = new VehicleRepository(db);
     this.missionRepo = new MissionRepository(db);
+    this.characterRepo = new CharacterRepository(db);
     this.npcRepo = new NpcRepository(db);
   }
 
   public getBootstrapSnapshot(): WorldBootstrapPayload {
     return {
-      version: 1,
+      version: 2,
       region: WORLD_BOUNDS.REGION_NAME,
       serverTime: new Date().toISOString(),
       zones: this.zoneRepo.findAllZones(),
@@ -31,6 +34,7 @@ export class WorldService {
       trees: this.zoneRepo.findAllTrees(),
       vehicles: this.vehicleRepo.findAll(),
       missions: this.missionRepo.findAll(),
+      characters: this.characterRepo.findAll(),
       npcs: this.npcRepo.findAll(),
     };
   }
