@@ -1,6 +1,16 @@
 export type SurfaceType = 'tarmac' | 'murram' | 'grass';
 export type VehicleKind = 'bodaboda' | 'bajaji' | 'daladala';
 
+export type CharacterRole =
+  | 'Software Engineer'
+  | 'Bodaboda Rider'
+  | 'Bajaji Captain'
+  | 'KCMC Medic'
+  | 'Kilimanjaro Trader'
+  | 'University Student';
+
+export type HeadgearStyle = 'none' | 'helmet' | 'cap' | 'beanie';
+
 export interface ZoneRecord {
   id: string;
   title: string;
@@ -17,7 +27,14 @@ export interface BuildingRecord {
   zone_id: string;
   name: string;
   label: string | null;
-  category: 'hospital' | 'pharmacy' | 'shop' | 'food' | 'hostel' | 'community' | 'residential';
+  category:
+    | 'hospital'
+    | 'pharmacy'
+    | 'shop'
+    | 'food'
+    | 'hostel'
+    | 'community'
+    | 'residential';
   x: number;
   y: number;
   width: number;
@@ -85,6 +102,28 @@ export interface PlayerRecord {
   updated_at: string;
 }
 
+export interface UserCharacterRecord {
+  id: string;
+  player_id: string;
+  username: string;
+  display_name: string;
+  role: CharacterRole;
+  skin_tone: string;
+  jacket_color: string;
+  accent_color: string;
+  headgear: HeadgearStyle;
+  bio: string;
+  x: number;
+  y: number;
+  angle: number;
+  speed: number;
+  in_vehicle_id: string | null;
+  is_online: number;
+  reputation: number;
+  waypoints_json: string;
+  updated_at: string;
+}
+
 export interface WalletRecord {
   player_id: string;
   balance_tzs: number;
@@ -97,7 +136,12 @@ export interface WalletTransactionRecord {
   id: string;
   player_id: string;
   amount_tzs: number;
-  tx_type: 'mission_reward' | 'fuel_purchase' | 'food_mama_ntilie' | 'mangi_shop' | 'repair';
+  tx_type:
+    | 'mission_reward'
+    | 'fuel_purchase'
+    | 'food_mama_ntilie'
+    | 'mangi_shop'
+    | 'repair';
   reference_id: string | null;
   description: string;
   created_at: string;
