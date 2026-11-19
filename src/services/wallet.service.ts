@@ -29,7 +29,7 @@ export class WalletService {
       return {
         success: false,
         wallet: current,
-        message: 'Salio la TZS halitoshi!',
+        message: 'Insufficient TZS balance!',
       };
     }
 
@@ -37,13 +37,13 @@ export class WalletService {
       playerId,
       -Math.abs(costTzs),
       category,
-      `Manunuzi: ${itemName}`
+      `Purchase: ${itemName}`
     );
 
     return {
       success: true,
       wallet: updated,
-      message: `Umenunua ${itemName} (-TZS ${costTzs.toLocaleString()})`,
+      message: `Purchased ${itemName} (-TZS ${costTzs.toLocaleString()})`,
     };
   }
 }
