@@ -4,7 +4,7 @@ import { NpcRecord } from '../../types/domain';
 export const INITIAL_NPCS: NpcRecord[] = [
   {
     id: 'ped-mangi',
-    name: 'Mangi (Dukani)',
+    name: 'Mangi Kimaro',
     role: 'shopkeeper',
     shirt_color: '#E67E22',
     x: 1125,
@@ -14,7 +14,7 @@ export const INITIAL_NPCS: NpcRecord[] = [
       { x: 1125, y: 1080 },
       { x: 1125, y: 1320 },
     ]),
-    dialogue_sw: 'Karibu Duka la Mangi! M-Pesa na vocha zipo hapa.',
+    dialogue_sw: 'Welcome to Mangi General Store! M-Pesa and mobile vouchers available here.',
   },
   {
     id: 'ped-mama-ntilie',
@@ -28,11 +28,11 @@ export const INITIAL_NPCS: NpcRecord[] = [
       { x: 1270, y: 1090 },
       { x: 1480, y: 1140 },
     ]),
-    dialogue_sw: 'Supu ya moto na ndizi nyama tayari!',
+    dialogue_sw: 'Hot beef banana stew and fresh soup are ready!',
   },
   {
     id: 'ped-kcmc-nurse',
-    name: 'Nesi wa KCMC',
+    name: 'Dr. Neema Massawe',
     role: 'medic',
     shirt_color: '#3498DB',
     x: 1105,
@@ -42,11 +42,11 @@ export const INITIAL_NPCS: NpcRecord[] = [
       { x: 1105, y: 350 },
       { x: 920, y: 380 },
     ]),
-    dialogue_sw: 'Tafadhali endesha kwa uangalifu karibu na Geti la KCMC.',
+    dialogue_sw: 'Please drive carefully near the KCMC Hospital Main Gate.',
   },
   {
     id: 'ped-villager-1',
-    name: 'Mkazi wa Ushirika',
+    name: 'Baraka Lyimo',
     role: 'farmer',
     shirt_color: '#2ECC71',
     x: 1130,
@@ -57,11 +57,11 @@ export const INITIAL_NPCS: NpcRecord[] = [
       { x: 1130, y: 1890 },
       { x: 1450, y: 1890 },
     ]),
-    dialogue_sw: 'Hali ya hewa ya Kilimanjaro ni safi sana leo!',
+    dialogue_sw: 'The Kilimanjaro mountain breeze is crystal clear today!',
   },
   {
     id: 'ped-student-1',
-    name: 'Mwanafunzi wa KCMC',
+    name: 'Grace Shirima',
     role: 'student',
     shirt_color: '#F1C40F',
     x: 1520,
@@ -72,7 +72,7 @@ export const INITIAL_NPCS: NpcRecord[] = [
       { x: 1265, y: 830 },
       { x: 1265, y: 550 },
     ]),
-    dialogue_sw: 'Ninawahi kipindi asubuhi KCMC, Boda ipo wapi?',
+    dialogue_sw: 'Heading to morning lectures at KCMC—need a quick Bodaboda ride!',
   },
 ];
 
