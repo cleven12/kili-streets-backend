@@ -4,7 +4,7 @@ import { RoadRecord, TreeRecord } from '../../types/domain';
 export const INITIAL_ROADS: RoadRecord[] = [
   {
     id: 'kcmc-highway',
-    name: 'Barabara Kuu ya KCMC',
+    name: 'KCMC Main Highway',
     surface: 'tarmac',
     orientation: 'horizontal',
     x: 0,
@@ -15,7 +15,7 @@ export const INITIAL_ROADS: RoadRecord[] = [
   },
   {
     id: 'kcmc-gate-drive',
-    name: 'Geti Kuu la KCMC',
+    name: 'KCMC Hospital Main Gate Drive',
     surface: 'tarmac',
     orientation: 'vertical',
     x: 1120,
@@ -26,7 +26,7 @@ export const INITIAL_ROADS: RoadRecord[] = [
   },
   {
     id: 'ushirika-main-road',
-    name: 'Barabara ya Ushirika wa Neema',
+    name: 'Ushirika wa Neema Main Road',
     surface: 'murram',
     orientation: 'vertical',
     x: 1145,
@@ -37,7 +37,7 @@ export const INITIAL_ROADS: RoadRecord[] = [
   },
   {
     id: 'ushirika-central-lane',
-    name: 'Mtaa wa Mangi & Mama Ntilie',
+    name: 'Mangi & Mama Ntilie Avenue',
     surface: 'murram',
     orientation: 'horizontal',
     x: 340,
@@ -48,7 +48,7 @@ export const INITIAL_ROADS: RoadRecord[] = [
   },
   {
     id: 'ushirika-south-lane',
-    name: 'Mtaa wa Ushirika Kusini',
+    name: 'South Ushirika Village Loop',
     surface: 'murram',
     orientation: 'horizontal',
     x: 340,
@@ -59,7 +59,7 @@ export const INITIAL_ROADS: RoadRecord[] = [
   },
   {
     id: 'ushirika-west-lane',
-    name: 'Njia ya Shambani Magharibi',
+    name: 'West Plantation Trail',
     surface: 'murram',
     orientation: 'vertical',
     x: 340,
@@ -70,7 +70,7 @@ export const INITIAL_ROADS: RoadRecord[] = [
   },
   {
     id: 'ushirika-east-lane',
-    name: 'Njia ya Ushirika Mashariki',
+    name: 'East Hostel Connector Lane',
     surface: 'murram',
     orientation: 'vertical',
     x: 1974,
