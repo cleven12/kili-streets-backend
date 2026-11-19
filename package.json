@@ -1,0 +1,18 @@
+{
+  "name": "kili-streets-backend",
+  "version": "1.0.0",
+  "private": false,
+  "type": "module",
+  "description": "Kili Streets: Ushirika wa Neema & KCMC — High-Performance Bun + SQLite Open-World Game Backend",
+  "scripts": {
+    "dev": "bun --watch src/server.ts",
+    "start": "bun src/server.ts",
+    "db:migrate": "bun src/db/cli-migrate.ts",
+    "db:seed": "bun src/db/cli-seed.ts",
+    "test": "bun test"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^5.6.3"
+  }
+}
